@@ -1,14 +1,15 @@
 import random
 
-print("Üdvözöllek a játékban!")
+print("Üdvözöllek a játékban! 👋")
 
 jatekos = []
 
-generalt_szamok = {random.randint(1, 10) for i in range(5)}
-
+generalt_szamok = {random.randint(1, 91) for i in range(5)}
+sorszam = 0
 
 while len(jatekos) < 5:
-    jatekos_szamok = int(input("Adj meg egy számot! "))
+    sorszam += 1
+    jatekos_szamok = int(input(f"Kérlek add meg a {sorszam}. számot! "))
     if jatekos_szamok in jatekos:
         print("Ez a szám már volt! Válassz újat!")
     elif jatekos_szamok >= 1 and jatekos_szamok <= 90:
@@ -16,19 +17,8 @@ while len(jatekos) < 5:
     else:   
         print("Helytelen szám! Válassz újat!")
 
-# talalat = 0
-# for szam in jatekos :
-#      if jatekos_szamok in generalt_szamok:
-#         talalat += 1
-
 talalat = generalt_szamok.intersection(jatekos)
-print(f"Találatok: {len(talalat)}")
 
 print(f"A te számaid: {jatekos}")
 print(f"Nyerőszámok: {generalt_szamok}")
-print(f"Találat: {talalat}")
-
-
-#Problémák:
-#nyerőszámok ne lehessen ugyanaz
-#találat számláló
+print(f"{len(talalat)} darab találatod van.")
