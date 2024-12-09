@@ -3,7 +3,9 @@ import random
 print("Üdvözöllek a játékban!")
 
 jatekos = []
-generalt_szamok = [random.randint(1, 10) for i in range(5)]
+
+generalt_szamok = {random.randint(1, 10) for i in range(5)}
+
 
 while len(jatekos) < 5:
     jatekos_szamok = int(input("Adj meg egy számot! "))    
@@ -14,11 +16,11 @@ while len(jatekos) < 5:
     else:   
         print("Ez nem jóÓ!!")
 
-talalat = [0]
+talalat = 0
 
 for szam in talalat :
     if jatekos in generalt_szamok:
-        talalat.append(szam)
+        talalat += 1
 
 print(f"A te számaid: {jatekos}")
 print(f"Nyerőszámok: {generalt_szamok}")
