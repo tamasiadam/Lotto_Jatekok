@@ -34,7 +34,7 @@ def otos_lotto():
 
 def hatos_lotto():
 
-    print("Üdv az hatos lottóban!")
+    print("Üdv a hatos lottóban!")
     jatekos = []
 
     generalt_szamok = {random.randint(1, 46) for i in range(6)}
@@ -60,14 +60,45 @@ def hatos_lotto():
     else:
         print("Sok szerencsét legközelebb! 🍀")
 
+def hetes_lotto():
+
+    print("Üdv a hetes lottóban!")
+    jatekos = []
+
+    generalt_szamok = {random.randint(1, 46) for i in range(6)}
+    sorszam = 0
+
+    while len(jatekos) < 7:
+        sorszam += 1
+        jatekos_szamok = int(input(f"Kérlek add meg a(z) {sorszam}. számot! "))
+        if jatekos_szamok in jatekos:
+            print("Ez a szám már volt! ❌ \n Válassz újat!")
+        elif jatekos_szamok >= 1 and jatekos_szamok <= 35:
+            jatekos.append(jatekos_szamok)
+        else:   
+            print("Helytelen szám! ❌ \nVálassz újat!")
+
+    talalat = generalt_szamok.intersection(jatekos)
+
+    print(f"A te számaid: {jatekos}")
+    print(f"Nyerőszámok: {generalt_szamok}")
+    print(f"{len(talalat)} darab találatod van.")
+    if len(talalat) == 7:
+        print("Gratulálok, megnyerted a játékot! 🏆")
+    else:
+        print("Sok szerencsét legközelebb! 🍀")
+
 
 while True:
-    jatek_valasztas = int(input("Válassz játékot!\nÖtös lottó (1)\nHatos lottó (2)\nVálassz! (1 vagy 2): "))
+    jatek_valasztas = int(input("Válassz játékot!\nÖtös lottó (1)\nHatos lottó (2)\nHetes lottó (3)\nVálassz!: "))
     if jatek_valasztas == 1:
         print("Ötös lottó kiválasztva! ✅")
         otos_lotto()
     if jatek_valasztas == 2:
         print("Hatos lottó kiválasztva! ✅")
         hatos_lotto()
+    if jatek_valasztas == 3:
+        print("Hetes lottó kiválasztva! ✅")
+        hetes_lotto()
     else:
         print("Helytelen formátum! ❌")
